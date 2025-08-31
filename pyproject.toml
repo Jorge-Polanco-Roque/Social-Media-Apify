@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "social-listening"
+version = "0.1.0"
+description = "Social listening project"
+authors = ["Jorge Polanco <55784702+Jorge-Polanco-Roque@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+apify-client = "^2.0.0"
+python-dotenv = "^1.1.1"
+pandas = "^2.3.2"
+openai = "^1.102.0"
+plotly = "^6.3.0"
+streamlit = "^1.49.1"
+seaborn = "^0.13.2"
+matplotlib = "^3.10.6"
+scipy = "^1.16.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0"
+black = "^23.0"
+flake8 = "^6.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
