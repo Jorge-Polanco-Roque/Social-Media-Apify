@@ -1,27 +1,42 @@
-# Social Media Listening (TikTok + LLMs)
+<h1 align="center">Social Media Listening</h1>
 
-A social-listening pipeline that collects public TikTok content at scale and turns
-it into structured insight using large language models. Data is gathered through the
-**Apify** platform and then classified and summarized with LLMs.
+<p align="center">
+  <strong>Collect public TikTok content at scale and turn it into structured insight with large language models.</strong>
+</p>
 
-## Objective
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.11+-blue?logo=python&logoColor=white" alt="Python 3.11+">
+  <img src="https://img.shields.io/badge/Apify-scraping-00b04f?logo=apify&logoColor=white" alt="Apify">
+  <img src="https://img.shields.io/badge/LLM-classification-412991?logo=openai&logoColor=white" alt="LLM">
+  <img src="https://img.shields.io/badge/Poetry-deps-60a5fa?logo=poetry&logoColor=white" alt="Poetry">
+</p>
 
-Move from raw, unstructured social-media text to analyzable, labeled data: collect
-TikTok posts and comments for a set of accounts or topics, then use LLMs to classify
-them (theme, sentiment, intent) and produce post-level analytics.
+---
+
+## Overview
+
+A social-listening pipeline that goes from raw, unstructured social media to analyzable,
+labeled data. It collects TikTok **posts and comments** through the **Apify** platform,
+then uses LLMs to classify and summarize them (theme, sentiment, intent) and produce
+post-level analytics. The goal is to make large-scale social text usable for research and
+decision-making, where one search angle or a manual read would never scale.
+
+## Pipeline
+
+| Stage | What happens |
+|---|---|
+| **Collect** | `api_calls/01_tiktok.py`, `02_tiktok.py` pull posts and metadata via the Apify API |
+| **Deduplicate** | `tiktok_unique_url.txt` keeps a clean, deduplicated set of collected URLs |
+| **Classify** | `llm_classification/tiktok_posts.py` and `tiktok_comentarios.py` label posts and comment threads with LLMs |
+| **Analyze** | `llm_classification/analytics_post.py` aggregates into post-level analytics |
 
 ## What's inside
 
-- **`api_calls/`** — TikTok collection scripts that pull posts and metadata via the
-  Apify API (`01_tiktok.py`, `02_tiktok.py`).
-- **`llm_classification/`** — LLM-based analysis:
-  - `tiktok_posts.py` — classify and structure scraped posts.
-  - `tiktok_comentarios.py` — classify comment threads.
-  - `analytics_post.py` — post-level analytics and aggregation.
-- **`tiktok_unique_url.txt`** — deduplicated set of collected TikTok URLs.
+- **`api_calls/`** — TikTok collection scripts (Apify).
+- **`llm_classification/`** — LLM classification of posts and comments, plus analytics.
 - **`test.ipynb`** — exploratory notebook.
 
-## Stack
+## Tech Stack
 
 Python · Apify · LLM APIs · Poetry.
 
